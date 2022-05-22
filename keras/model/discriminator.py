@@ -1,3 +1,4 @@
+from re import L
 import sys
 import numpy as np
 import tensorflow as tf
@@ -8,6 +9,7 @@ from keras.optimizers import Adam
 from keras.utils import plot_model
 
 class Discriminator(object):
+    # inital parameter setting
     def __init__(self, width = 28, height= 28, channels = 1, latent_size=100):
         # need a adjustment
         self.CAPACITY = width*height*channels
@@ -29,12 +31,12 @@ class Discriminator(object):
         model.add(LeakyReLU(alpha = 0.2))
         model.add(Conv2D(filters = 256, kernel_size = (1,1), strides = 1, padding = 0))
         model.add(LeakyReLU(alpha = 0.2))
-        # Pooling layers
+        # Silicon Pooling layers
         model.add(AvgPool2D(pool_size= (1000,1)))
         # Backward side of models
         model.add(Dense(500, activation='leakyReLU'))
         model.add(Dense(200, activation='leakyReLU'))
-        model.add(Dense(10, activation='leakyReLU'))
+        model.add(Dense(10))
 
         return model
 
