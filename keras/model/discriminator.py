@@ -10,7 +10,7 @@ from keras.utils import plot_model
 
 class Discriminator(object):
     # inital parameter setting
-    def __init__(self, width = 28, height= 28, channels = 1, latent_size=100):
+    def __init__(self, width = 3, height= 1002, channels = 1, latent_size = 512):
         # need a adjustment
         self.CAPACITY = width*height*channels
         self.SHAPE = (width,height,channels)
